@@ -13,24 +13,29 @@ class ViewController: UIViewController {
     var previousNumber : Double = 0
     var performingMath = false
     var operation = 0
+    var runningNumber = ""
+    
     
     @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
 
     @IBAction func numbers(_ sender: UIButton) {
+        runningNumber = String(numberOnScreen)
         
         if performingMath == true{
-            label.text = String(sender.tag)
-            numberOnScreen = Double(label.text!)!
+            label.text =  String(sender.tag)
+            numberOnScreen = Double(sender.tag)
             performingMath = false
         }
         else{
         label.text = label.text! + String(sender.tag)
         numberOnScreen = Double(label.text!)!
+        
         }
         
     }
@@ -38,32 +43,13 @@ class ViewController: UIViewController {
     
     @IBAction func buttons(_ sender: UIButton) {
         
-        if label.text != "" && sender.tag != 10 && sender.tag != 15{
+        if label.text != "" && sender.tag != 10 && sender.tag != 15 && sender.tag != 17  {
             
             previousNumber = Double(label.text!)!
-            //div
-            if sender.tag == 11
-            {
-                label.text = "÷"
-
-            }
-            //multiply
-            else if sender.tag == 12
-            {
-                label.text = "x"
-
-            }
-            //minus
-            else if sender.tag == 13
-            {
-                label.text = "-"
-
-            }
-            //plus
-            else if sender.tag == 14
-            {
-                label.text = "+"
-            }
+           
+            label.text =  sender.currentTitle!
+            
+            
             operation = sender.tag
             performingMath = true
         }
@@ -85,15 +71,37 @@ class ViewController: UIViewController {
             {
                 label.text = String(previousNumber + numberOnScreen)
             }
+        
+            
+            else{
+                label.text = String(numberOnScreen)
+            }
+            
 
         }
+        
         else if sender.tag == 10{
             label.text = ""
             previousNumber = 0
             numberOnScreen = 0
             operation = 0
         }
+        else if sender.tag == 17{
+            label.text = ""
+            numberOnScreen = 0
+            
+        }
         
+    }
+    
+    
+    @IBAction func dotpressed(_ sender: RoundButton) {
+        
+        runningNumber = String(numberOnScreen)
+        if runningNumber.count <= 7{
+            runningNumber += "."
+            label.text = runningNumber
+        }
     }
     
 }
