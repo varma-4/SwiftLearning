@@ -8,7 +8,6 @@
 import UIKit
 
 
-@IBDesignable
 class RoundButton: UIButton {
 
     /*
@@ -18,16 +17,16 @@ class RoundButton: UIButton {
         // Drawing code
     }
     */
-    @IBInspectable var roundButton : Bool = false{
-        didSet{
-            if roundButton{
+    @IBInspectable var roundButton: Bool = false{
+        didSet {
+            if roundButton {
                 layer.cornerRadius = frame.height / 2
             }
         }
     }
 
     override func prepareForInterfaceBuilder() {
-        if roundButton{
+        if roundButton {
             layer.cornerRadius = frame.height / 2
         }
     }

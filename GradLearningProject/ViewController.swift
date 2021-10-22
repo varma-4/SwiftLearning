@@ -7,43 +7,37 @@
 
 import UIKit
 
-enum Operation : String {
-    case Add = "+"
-    case Substract = "-"
-    case Divide = "/"
-    case Multiply = "x"
+enum Operation: String {
+    case add = "+"
+    case substract = "-"
+    case divide = "/"
+    case multiply = "x"
     case NULL = "Null"
 }
 
 class ViewController: UIViewController {
 
-    //Label Outlet
+    // Label Outlet
     @IBOutlet weak var label: UILabel!
-    
     // variables for performing calculation
     var numberOnScreen = ""
     var leftValue = ""
     var rightValue = ""
     var result = ""
-    var operation : Operation = .NULL
-    
+    var operation: Operation = .NULL
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         label.text = "0"
     }
-    
-    
-    //0-9 Button Actions
+    // 0-9 Button Actions
     @IBAction func numbers(_ sender: RoundButton) {
-        if numberOnScreen.count <= 8{
+        if numberOnScreen.count <= 8 {
         numberOnScreen += "\(sender.tag)"
         label.text = numberOnScreen
-   
-        }
+   }
     }
-    
-    //All Clear Button Action
+    // All Clear Button Action
     @IBAction func allClear(_ sender: RoundButton) {
         numberOnScreen = ""
         leftValue = ""
@@ -51,97 +45,82 @@ class ViewController: UIViewController {
         result = ""
         operation = .NULL
         label.text = "0"
-        
     }
-    
-  
-    //Divide Operation
+    // Divide Operation
     @IBAction func divOp(_ sender: RoundButton) {
-        operationfunc(op: .Divide)
+        operationfunc(oper: .divide)
 
     }
-    
-    //Multiplication
+    // Multiplication
     @IBAction func mulOp(_ sender: RoundButton) {
-        operationfunc(op: .Multiply)
+        operationfunc(oper: .multiply)
 
     }
-    
-    //Substraction
+    // Substraction
     @IBAction func minusOp(_ sender: RoundButton) {
-        operationfunc(op: .Substract)
+        operationfunc(oper: .substract)
 
     }
-    
-    //Addition
+    // Addition
     @IBAction func addOp(_ sender: RoundButton) {
-        operationfunc(op: .Add)
+        operationfunc(oper: .add)
     }
-    
     // Equal To Button
     @IBAction func equal(_ sender: RoundButton) {
-        operationfunc(op: operation)
+        operationfunc(oper: operation)
 
     }
-    
-    //Dot button
+    // Dot button
     @IBAction func dot(_ sender: RoundButton) {
-        if numberOnScreen.count <= 7{
+        if numberOnScreen.count <= 7 {
         numberOnScreen += "."
         label.text = numberOnScreen
     }
     }
-    
-    //Performing Calculation
-    func operationfunc(op: Operation)  {
+    // Performing Calculation
+    func operationfunc(oper: Operation) {
         var left = 0.0
         var right = 0.0
         var res = 0.0
-        if operation != .NULL{
+        if operation != .NULL {
             if numberOnScreen != ""{
-                //If operation is not null and there is some number on screen
+                // If operation is not null and there is some number on screen
                 rightValue = numberOnScreen
                 numberOnScreen = ""
-                if let leftv = Double(leftValue){
+                if let leftv = Double(leftValue) {
                     left = leftv
                 }
-                if let rightv = Double(rightValue){
+                if let rightv = Double(rightValue) {
                     right = rightv
                 }
-                switch operation{
-                case .Add : result = "\(left + right)"
-                case .Substract : //Performing Sustraction
-                    result = "\(left - right)"
-                case .Multiply : // Performing Multiplication
-                    result = "\(left * right)"
-                case .Divide : //Performing Division
-                    result = "\(left / right)"
+                switch operation {
+                case .add : result = "\(left + right)"
+                case .substract : // Performing Sustraction
+                                    result = "\(left - right)"
+                case .multiply : // Performing Multiplication
+                                    result = "\(left * right)"
+                case .divide : // Performing Division
+                                    result = "\(left / right)"
                 case .NULL : print("No operation")
                 }
-                if let resultv = Double(result){
+                if let resultv = Double(result) {
                     res = resultv
                 }
-            
                 leftValue = result
-                
-                if( res.truncatingRemainder(dividingBy: 1) == 0){
-                    //if the numbers are integer then converting the result back to integer
+                if res.truncatingRemainder(dividingBy: 1) == 0 {
+                    // if the numbers are integer then converting the result back to integer
                     result = "\(Int(res))"
                 }
-                //printing result
+                // printing result
                 label.text = result
             }
             // storing the operation for further calculation
-            operation = op
-            
-        }
-        else{
-            //for the first number
+            operation = oper
+        } else {
+            // for the first number
             leftValue = numberOnScreen
             numberOnScreen = ""
-            operation = op
+            operation = oper
         }
-        
     }
 }
-

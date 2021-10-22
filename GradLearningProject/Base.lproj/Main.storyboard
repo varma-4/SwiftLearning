@@ -13,11 +13,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xP5-ym-wKt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="wI8-Ck-WgD" customClass="ViewController" customModule="GradLearningProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f1p-u9-Neb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="fsB-1d-uXX">
-                                <rect key="frame" x="32" y="397" width="350" height="450"/>
+                                <rect key="frame" x="32" y="271" width="350" height="450"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="jL6-w7-hkH">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
@@ -101,7 +101,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="xd5-WW-NBV">
-                                        <rect key="frame" x="0.0" y="92.5" width="350" height="80"/>
+                                        <rect key="frame" x="0.0" y="92.666666666666686" width="350" height="80"/>
                                         <subviews>
                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GM-Y5-5lD" customClass="RoundButton" customModule="GradLearningProject" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -263,7 +263,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="phT-X5-vEf">
-                                        <rect key="frame" x="0.0" y="277.5" width="350" height="80"/>
+                                        <rect key="frame" x="0.0" y="277.66666666666663" width="350" height="80"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDd-wi-s8q" customClass="RoundButton" customModule="GradLearningProject" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -413,7 +413,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voA-LM-qoq">
-                                <rect key="frame" x="32" y="119" width="350" height="253"/>
+                                <rect key="frame" x="32" y="75" width="350" height="171"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -438,63 +438,4 @@
             <point key="canvasLocation" x="1205.7065217391305" y="-60.869565217391312"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="06u-7H-E6W">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="1FB-3e-tbl">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="1LO-ZD-pH8">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="6GM-Y5-5lD">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="B55-mX-PJt">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="BIs-DS-5oG">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="FiM-ZG-61p">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="JqO-7Y-nKe">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="MZ8-O8-gU5">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="UBJ-Vz-rdH">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="UFV-f9-e4p">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="Unu-JT-M4j">
-            <size key="intrinsicContentSize" width="43" height="53"/>
-        </designable>
-        <designable name="bhT-tu-Tdl">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="deD-hs-Qa0">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="dsC-3i-NfY">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="hcI-uz-5zW">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="pZI-SP-58T">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="rQ7-rg-9nD">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-        <designable name="wDd-wi-s8q">
-            <size key="intrinsicContentSize" width="30" height="53"/>
-        </designable>
-    </designables>
 </document>
