@@ -48,8 +48,94 @@ class GradLearningProjectTests: XCTestCase {
         }
         XCTAssertEqual(viewController.numberOnScreen.count, 9)
     }
-
     // logic
     // UI
-
+    func testAddition() {
+        let num1 = 10.0
+        let num2 = 20.0
+       let viewcontroller = ViewController()
+        viewcontroller.method1(left: num1,right: num2, opp: .add)
+        XCTAssertEqual(viewcontroller.result, "30")
+    }
+    func testSubstraction() {
+        let num1 = 20.0
+        let num2 = 10.0
+       let viewcontroller = ViewController()
+        viewcontroller.method1(left: num1, right: num2, opp: .substract)
+        XCTAssertEqual(viewcontroller.result, "10")
+    }
+    func testMultiply() {
+        let num1 = 10.0
+        let num2 = 20.0
+       let viewcontroller = ViewController()
+        viewcontroller.method1(left: num1, right: num2, opp: .multiply)
+        XCTAssertEqual(viewcontroller.result, "200")
+    }
+    func testDivision() {
+        let num1 = 20.0
+        let num2 = 10.0
+       let viewcontroller = ViewController()
+        viewcontroller.method1(left: num1, right: num2, opp: .divide)
+        XCTAssertEqual(viewcontroller.result, "2")
+    }
+    func testOperationFunc() {
+        let viewcontroller = ViewController()
+        viewcontroller.operationfunc(oper: .add)
+        XCTAssertEqual(viewcontroller.result, "")
+    }
+    func testDotButton() {
+        let viewController = ViewController()
+        var buttons = [RoundButton]()
+        for number in 0..<8 {
+            let object = RoundButton()
+            object.tag = number
+            buttons.append(object)
+        }
+        XCTAssertTrue(buttons.count == 8)
+        XCTAssertEqual(buttons.count, 8, "Button count should be eight")
+        for number in 0...7 {
+            let button = number > (buttons.count - 1) ? buttons[0] : buttons[number]
+            viewController.dotTapped(button: button)
+        }
+        XCTAssertEqual(viewController.numberOnScreen.count, 8)
+        
+    }
+    func testAllClear() {
+        let button = RoundButton()
+        let viewcontroller = ViewController()
+        viewcontroller.allClear(button)
+        XCTAssertEqual(viewcontroller.numberOnScreen, "")
+        XCTAssertEqual(viewcontroller.result, "")
+    }
+    func testDivOp() {
+        let button = RoundButton()
+        let viewcontroller = ViewController()
+        viewcontroller.divOp(button)
+        XCTAssertEqual(viewcontroller.test, "Performing Division")
+    }
+    func testMulOp() {
+        let button = RoundButton()
+        let viewcontroller = ViewController()
+        viewcontroller.mulOp(button)
+        XCTAssertEqual(viewcontroller.test, "Performing multiplication")
+    }
+    func testMinusOp() {
+        let button = RoundButton()
+        let viewcontroller = ViewController()
+        viewcontroller.minusOp(button)
+        XCTAssertEqual(viewcontroller.test, "Performing Substraction")
+    }
+    func testAddOp() {
+        let button = RoundButton()
+        let viewcontroller = ViewController()
+        viewcontroller.addOp(button)
+        XCTAssertEqual(viewcontroller.test, "Performing Addition")
+    }
+    func testmethod1() {
+        let num1 = 10.0
+        let num2 = 10.0
+        let viewcontroller = ViewController()
+         viewcontroller.method1(left: num1, right: num2, opp: .divide)
+         XCTAssertEqual(viewcontroller.leftValue, "1.0")
+    }
 }

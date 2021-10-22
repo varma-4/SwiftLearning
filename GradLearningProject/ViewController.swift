@@ -7,24 +7,17 @@
 
 import UIKit
 
+enum OperatorKeys: String {
+    case add = "+"
+    case substract = "-"
+    case divide = "/"
+    case multiply = "x"
+    case NULL = "Null"
+}
+
 // tableview, collectionView, scrollView
 
 class ViewController: UIViewController {
-
-    private enum OperatorKeys: String {
-        case add = "+"
-        case substract = "-"
-        case divide = "/"
-        case multiply = "x"
-        case NULL = "Null"
-    }
-
-    private enum Numbers: Int {
-        case zero
-        case one
-        case two
-        case three
-    }
 
     // Label Outlet
     @IBOutlet weak var label: UILabel!
@@ -33,6 +26,7 @@ class ViewController: UIViewController {
     var leftValue = ""
     var rightValue = ""
     var result = ""
+    var test = ""
     private var operation: OperatorKeys = .NULL
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,20 +64,24 @@ class ViewController: UIViewController {
     // Divide Operation
     @IBAction func divOp(_ sender: RoundButton) {
         operationfunc(oper: .divide)
+        test = "Performing Division"
     }
     // Multiplication
     @IBAction func mulOp(_ sender: RoundButton) {
         operationfunc(oper: .multiply)
+        test = "Performing multiplication"
 
     }
     // Substraction
     @IBAction func minusOp(_ sender: RoundButton) {
         operationfunc(oper: .substract)
+        test = "Performing Substraction"
 
     }
     // Addition
     @IBAction func addOp(_ sender: RoundButton) {
         operationfunc(oper: .add)
+        test = "Performing Addition"
     }
     // Equal To Button
     @IBAction func equal(_ sender: RoundButton) {
@@ -91,20 +89,43 @@ class ViewController: UIViewController {
     }
     // Dot button
     @IBAction func dot(_ sender: RoundButton) {
-        if numberOnScreen.count <= 7 {
-            numberOnScreen += "."
+        dotTapped(button: sender)
+        // connecting to the label
+        if label.text != numberOnScreen {
             label.text = numberOnScreen
         }
+        
     }
+    func dotTapped(button: RoundButton ){
+        if numberOnScreen.count <= 7 {
+            numberOnScreen += "."
+            
+        }
+        
+    }
+    
     // Performing Calculation
-    private func operationfunc(oper: OperatorKeys) {
+    func operationfunc(oper: OperatorKeys) {
         var left = 0.0
         var right = 0.0
-        var res = 0.0
         // First check if the operation is not null
         // bussiness rule
         if operation != .NULL {
-            method1()
+            if numberOnScreen != ""{
+                // If operation is not null and there is some number on screen
+                rightValue = numberOnScreen
+                numberOnScreen = ""
+                if let leftv = Double(leftValue) {
+                    left = leftv
+                }
+                if let rightv = Double(rightValue) {
+                    right = rightv
+                }
+                let opp = oper
+                method1(left: left, right: right, opp: opp)
+                // printing result
+                label.text = result
+            }
             // storing the operation for further calculation
             operation = oper
         } else {
@@ -115,21 +136,9 @@ class ViewController: UIViewController {
         }
     }
 
-    func method1() {
-        var left = 0.0
-        var right = 0.0
+    func method1(left: Double, right: Double, opp: OperatorKeys) {
         var res = 0.0
-        if numberOnScreen != ""{
-            // If operation is not null and there is some number on screen
-            rightValue = numberOnScreen
-            numberOnScreen = ""
-            if let leftv = Double(leftValue) {
-                left = leftv
-            }
-            if let rightv = Double(rightValue) {
-                right = rightv
-            }
-            switch operation {
+            switch opp {
             case .add : result = "\(left + right)"
             case .substract : // Performing Sustraction
                                 result = "\(left - right)"
@@ -147,8 +156,5 @@ class ViewController: UIViewController {
                 // if the numbers are integer then converting the result back to integer
                 result = "\(Int(res))"
             }
-            // printing result
-            label.text = result
-        }
     }
 }
