@@ -7,22 +7,24 @@
 
 import UIKit
 
-enum OperatorKeys: String {
-    case add = "+"
-    case substract = "-"
-    case divide = "/"
-    case multiply = "x"
-    case NULL = "Null"
-}
-
-enum Numbers: Int {
-    case zero
-    case one
-    case two
-    case three
-}
+// tableview, collectionView, scrollView
 
 class ViewController: UIViewController {
+
+    private enum OperatorKeys: String {
+        case add = "+"
+        case substract = "-"
+        case divide = "/"
+        case multiply = "x"
+        case NULL = "Null"
+    }
+
+    private enum Numbers: Int {
+        case zero
+        case one
+        case two
+        case three
+    }
 
     // Label Outlet
     @IBOutlet weak var label: UILabel!
@@ -31,7 +33,7 @@ class ViewController: UIViewController {
     var leftValue = ""
     var rightValue = ""
     var result = ""
-    var operation: OperatorKeys = .NULL
+    private var operation: OperatorKeys = .NULL
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -95,7 +97,7 @@ class ViewController: UIViewController {
         }
     }
     // Performing Calculation
-    func operationfunc(oper: OperatorKeys) {
+    private func operationfunc(oper: OperatorKeys) {
         var left = 0.0
         var right = 0.0
         var res = 0.0
