@@ -7,102 +7,141 @@
 
 import UIKit
 
+enum Operation : String {
+    case Add = "+"
+    case Substract = "-"
+    case Divide = "/"
+    case Multiply = "x"
+    case NULL = "Null"
+}
+
 class ViewController: UIViewController {
 
-    var numberOnScreen : Double = 0;
-    var previousNumber : Double = 0
-    var performingMath = false
-    var operation = 0
-    var runningNumber = ""
-    
-    
+    //Label Outlet
     @IBOutlet weak var label: UILabel!
+    
+    // variables for performing calculation
+    var numberOnScreen = ""
+    var leftValue = ""
+    var rightValue = ""
+    var result = ""
+    var operation : Operation = .NULL
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        label.text = "0"
+    }
+    
+    
+    //0-9 Button Actions
+    @IBAction func numbers(_ sender: RoundButton) {
+        if numberOnScreen.count <= 8{
+        numberOnScreen += "\(sender.tag)"
+        label.text = numberOnScreen
+   
+        }
+    }
+    
+    //All Clear Button Action
+    @IBAction func allClear(_ sender: RoundButton) {
+        numberOnScreen = ""
+        leftValue = ""
+        rightValue = ""
+        result = ""
+        operation = .NULL
+        label.text = "0"
         
     }
+    
+  
+    //Divide Operation
+    @IBAction func divOp(_ sender: RoundButton) {
+        operationfunc(op: .Divide)
 
-    @IBAction func numbers(_ sender: UIButton) {
-        runningNumber = String(numberOnScreen)
-        
-        if performingMath == true{
-            label.text =  String(sender.tag)
-            numberOnScreen = Double(sender.tag)
-            performingMath = false
+    }
+    
+    //Multiplication
+    @IBAction func mulOp(_ sender: RoundButton) {
+        operationfunc(op: .Multiply)
+
+    }
+    
+    //Substraction
+    @IBAction func minusOp(_ sender: RoundButton) {
+        operationfunc(op: .Substract)
+
+    }
+    
+    //Addition
+    @IBAction func addOp(_ sender: RoundButton) {
+        operationfunc(op: .Add)
+    }
+    
+    // Equal To Button
+    @IBAction func equal(_ sender: RoundButton) {
+        operationfunc(op: operation)
+
+    }
+    
+    //Dot button
+    @IBAction func dot(_ sender: RoundButton) {
+        if numberOnScreen.count <= 7{
+        numberOnScreen += "."
+        label.text = numberOnScreen
+    }
+    }
+    
+    //Performing Calculation
+    func operationfunc(op: Operation)  {
+        var left = 0.0
+        var right = 0.0
+        var res = 0.0
+        if operation != .NULL{
+            if numberOnScreen != ""{
+                //If operation is not null and there is some number on screen
+                rightValue = numberOnScreen
+                numberOnScreen = ""
+                if let leftv = Double(leftValue){
+                    left = leftv
+                }
+                if let rightv = Double(rightValue){
+                    right = rightv
+                }
+                switch operation{
+                case .Add : result = "\(left + right)"
+                case .Substract : //Performing Sustraction
+                    result = "\(left - right)"
+                case .Multiply : // Performing Multiplication
+                    result = "\(left * right)"
+                case .Divide : //Performing Division
+                    result = "\(left / right)"
+                case .NULL : print("No operation")
+                }
+                if let resultv = Double(result){
+                    res = resultv
+                }
+            
+                leftValue = result
+                
+                if( res.truncatingRemainder(dividingBy: 1) == 0){
+                    //if the numbers are integer then converting the result back to integer
+                    result = "\(Int(res))"
+                }
+                //printing result
+                label.text = result
+            }
+            // storing the operation for further calculation
+            operation = op
+            
         }
         else{
-        label.text = label.text! + String(sender.tag)
-        numberOnScreen = Double(label.text!)!
-        
+            //for the first number
+            leftValue = numberOnScreen
+            numberOnScreen = ""
+            operation = op
         }
         
     }
-    
-    
-    @IBAction func buttons(_ sender: UIButton) {
-        
-        if label.text != "" && sender.tag != 10 && sender.tag != 15 && sender.tag != 17  {
-            
-            previousNumber = Double(label.text!)!
-           
-            label.text =  sender.currentTitle!
-            
-            
-            operation = sender.tag
-            performingMath = true
-        }
-        else if sender.tag == 15
-        {
-            if operation == 11
-            {
-                label.text = String(previousNumber / numberOnScreen)
-            }
-           else if operation == 12
-            {
-            label.text = String(previousNumber * numberOnScreen)
-            }
-            else if operation == 13
-            {
-                label.text = String(previousNumber - numberOnScreen)
-            }
-            else if operation == 14
-            {
-                label.text = String(previousNumber + numberOnScreen)
-            }
-        
-            
-            else{
-                label.text = String(numberOnScreen)
-            }
-            
-
-        }
-        
-        else if sender.tag == 10{
-            label.text = ""
-            previousNumber = 0
-            numberOnScreen = 0
-            operation = 0
-        }
-        else if sender.tag == 17{
-            label.text = ""
-            numberOnScreen = 0
-            
-        }
-        
-    }
-    
-    
-    @IBAction func dotpressed(_ sender: RoundButton) {
-        
-        runningNumber = String(numberOnScreen)
-        if runningNumber.count <= 7{
-            runningNumber += "."
-            label.text = runningNumber
-        }
-    }
-    
 }
 
