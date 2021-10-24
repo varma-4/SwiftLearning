@@ -15,10 +15,7 @@ enum OperatorKeys: String {
     case NULL = "Null"
 }
 
-// tableview, collectionView, scrollView
-
 class ViewController: UIViewController {
-
     // Label Outlet
     @IBOutlet weak var label: UILabel!
     // variables for performing calculation
@@ -27,7 +24,7 @@ class ViewController: UIViewController {
     var rightValue = ""
     var result = ""
     var test = ""
-    private var operation: OperatorKeys = .NULL
+    var operatorKey: OperatorKeys = .NULL
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -54,38 +51,47 @@ class ViewController: UIViewController {
     }
     // All Clear Button Action
     @IBAction func allClear(_ sender: RoundButton) {
+        allClearData()
+        label.text = "0"
+    }
+    /// This method clears all the data(variables) used
+    func allClearData() {
         numberOnScreen = ""
         leftValue = ""
         rightValue = ""
         result = ""
-        operation = .NULL
-        label.text = "0"
+        operatorKey = .NULL
     }
-    // Divide Operation
+    // Below 5 methods calls the operation function with different operators
+    /// 1 Divide Operation
+    /// - Parameter sender: should be  an instance of rounded button
     @IBAction func divOp(_ sender: RoundButton) {
         operationfunc(oper: .divide)
         test = "Performing Division"
     }
-    // Multiplication
+    ////// 2: Multiplication Operation
+    /// - Parameter sender: should be  an instance of rounded button
     @IBAction func mulOp(_ sender: RoundButton) {
         operationfunc(oper: .multiply)
         test = "Performing multiplication"
-
     }
-    // Substraction
+    /// 3: Substraction Operation
+    /// - Parameter sender: should be  an instance of rounded button
     @IBAction func minusOp(_ sender: RoundButton) {
         operationfunc(oper: .substract)
         test = "Performing Substraction"
-
     }
-    // Addition
+    /// 4: Addition Operation
+    /// - Parameter sender: should be  an instance of rounded button
     @IBAction func addOp(_ sender: RoundButton) {
         operationfunc(oper: .add)
         test = "Performing Addition"
     }
-    // Equal To Button
+    /// 5: Equal To Button
+    /// - Parameter sender: should be  an instance of rounded button
     @IBAction func equal(_ sender: RoundButton) {
-        operationfunc(oper: operation)
+        operationfunc(oper: operatorKey)
+        test = "Equal Button"
     }
     // Dot button
     @IBAction func dot(_ sender: RoundButton) {
@@ -94,27 +100,27 @@ class ViewController: UIViewController {
         if label.text != numberOnScreen {
             label.text = numberOnScreen
         }
-        
     }
-    func dotTapped(button: RoundButton ){
+    /// appends numberOnScreen and checks if the last digit is not dot
+    /// - Parameter button: should be  an instance of rounded button
+    func dotTapped(button: RoundButton ) {
         if numberOnScreen.count <= 7 {
             numberOnScreen += "."
-            
-        }
-        
+            }
     }
-    
-    // Performing Calculation
+    /// Calls the performing math method to perform the operation
+    /// - Parameter oper: OperatorKeys Enum
     func operationfunc(oper: OperatorKeys) {
         var left = 0.0
         var right = 0.0
         // First check if the operation is not null
         // bussiness rule
-        if operation != .NULL {
+        if operatorKey != .NULL {
+            // check if the numberOnScreen is not null
             if numberOnScreen != ""{
-                // If operation is not null and there is some number on screen
                 rightValue = numberOnScreen
                 numberOnScreen = ""
+                // converts the numbers into double
                 if let leftv = Double(leftValue) {
                     left = leftv
                 }
@@ -122,30 +128,31 @@ class ViewController: UIViewController {
                     right = rightv
                 }
                 let opp = oper
-                method1(left: left, right: right, opp: opp)
-                // printing result
+                performingMath(left: left, right: right, opp: opp)
+                // display result on the screen
                 label.text = result
             }
             // storing the operation for further calculation
-            operation = oper
+            operatorKey = oper
         } else {
             // for the first number
             leftValue = numberOnScreen
             numberOnScreen = ""
-            operation = oper
+            operatorKey = oper
         }
     }
-
-    func method1(left: Double, right: Double, opp: OperatorKeys) {
+    /// Performs addition, substraction, multiplication, division
+    /// - Parameters:
+    ///   - left: left value
+    ///   - right: right value
+    ///   - opp: operator
+    func performingMath(left: Double, right: Double, opp: OperatorKeys) {
         var res = 0.0
             switch opp {
             case .add : result = "\(left + right)"
-            case .substract : // Performing Sustraction
-                                result = "\(left - right)"
-            case .multiply : // Performing Multiplication
-                                result = "\(left * right)"
-            case .divide : // Performing Division
-                                result = "\(left / right)"
+            case .substract : result = "\(left - right)"
+            case .multiply : result = "\(left * right)"
+            case .divide : result = "\(left / right)"
             case .NULL : print("No operation")
             }
             if let resultv = Double(result) {
