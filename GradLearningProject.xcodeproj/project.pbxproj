@@ -15,6 +15,7 @@
 		3C7C274127158F17004B51D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C7C273F27158F17004B51D8 /* LaunchScreen.storyboard */; };
 		3C7C274C27158F17004B51D8 /* GradLearningProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C274B27158F17004B51D8 /* GradLearningProjectTests.swift */; };
 		3C7C275727158F17004B51D8 /* GradLearningProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C275627158F17004B51D8 /* GradLearningProjectUITests.swift */; };
+		D380CF8A2736F14E004A2E31 /* DownloadWithEscapingBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380CF892736F14E004A2E31 /* DownloadWithEscapingBootcamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3C7C275227158F17004B51D8 /* GradLearningProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradLearningProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7C275627158F17004B51D8 /* GradLearningProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradLearningProjectUITests.swift; sourceTree = "<group>"; };
 		3C7C275827158F17004B51D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D380CF892736F14E004A2E31 /* DownloadWithEscapingBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadWithEscapingBootcamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				3C7C273D27158F17004B51D8 /* Assets.xcassets */,
 				3C7C273F27158F17004B51D8 /* LaunchScreen.storyboard */,
 				3C7C274227158F17004B51D8 /* Info.plist */,
+				D380CF892736F14E004A2E31 /* DownloadWithEscapingBootcamp.swift */,
 			);
 			path = GradLearningProject;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D380CF8A2736F14E004A2E31 /* DownloadWithEscapingBootcamp.swift in Sources */,
 				3C7C273927158F15004B51D8 /* ViewController.swift in Sources */,
 				3C7C273527158F15004B51D8 /* AppDelegate.swift in Sources */,
 				3C7C273727158F15004B51D8 /* SceneDelegate.swift in Sources */,
