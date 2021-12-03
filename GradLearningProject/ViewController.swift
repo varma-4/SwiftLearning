@@ -21,14 +21,14 @@ class ViewController: UIViewController {
         Alamofire.request("https://jsonplaceholder.typicode.com/posts").responseJSON {
             response in
             //Original URL request
-            print(response.request)
+            //print(response.request)
             //HTTP URL response
-            print(response.response)
+           // print(response.response)
             
-            print(response.data)
-            print(response.result)
+            //print(response.data)
+            //print(response.result)
             if let JSON = response.result.value{
-                print("JSON: \(JSON)")
+                print(JSON)
             }
         }
 
